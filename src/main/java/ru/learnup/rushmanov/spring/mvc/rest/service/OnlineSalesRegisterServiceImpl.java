@@ -55,14 +55,15 @@ public class OnlineSalesRegisterServiceImpl implements OnlineSalesRegisterServic
 
     @Override
     @Transactional
-    public void buyTicket(int id) {
-        ticketDAO.buyTicket(id);
+    public Ticket buyTicket(int id) {
+
+        return ticketDAO.buyTicket(id);
     }
 
     @Override
     @Transactional
-    public void refundTicket(int id) {
-        ticketDAO.refundTicket(id);
+    public Ticket refundTicket(int id) {
+       return ticketDAO.refundTicket(id);
     }
 
 

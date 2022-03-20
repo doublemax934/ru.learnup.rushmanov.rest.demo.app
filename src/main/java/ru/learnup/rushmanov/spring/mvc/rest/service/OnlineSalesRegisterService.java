@@ -19,9 +19,9 @@ public interface OnlineSalesRegisterService {
 
     public Ticket getTicket(int id);
 
-    public void buyTicket(int id);
+    public Ticket buyTicket(int id);
 
-    public void refundTicket(int id);
+    public Ticket refundTicket(int id);
 
 
 }

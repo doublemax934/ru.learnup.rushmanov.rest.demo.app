@@ -56,27 +56,25 @@ public class MyRestController {
         return "Performance with ID " + id + " was deleted";
     }
 
-    @GetMapping("/performanceTicket/{title}")
+    @GetMapping("/performances/Ticket/{title}")
     public List<Ticket> showAllTickets(@PathVariable String  title){
         List<Ticket> allTickets = onlineSalesRegisterService.getAllTickets(title);
         return allTickets;
     }
 
-    @GetMapping("/performanceBuyTicket/{id}")
-    public String buyTicket (@PathVariable int id){
+    @GetMapping("/performances/Ticket/Buy/{id}")
+    public Ticket buyTicket (@PathVariable int id){
         Ticket ticket = onlineSalesRegisterService.getTicket(id);
         onlineSalesRegisterService.buyTicket(id);
-
-        return "The ticket was purchased successfully" + ticket;
+        System.out.println("The ticket was purchased successfully");
+        return ticket;
     }
 
-    @GetMapping("/performanceRefundTicket/{id}")
-    public String refundTicket (@PathVariable int id){
+    @GetMapping("/performances/Ticket/Refund/{id}")
+    public Ticket refundTicket (@PathVariable int id){
         Ticket ticket = onlineSalesRegisterService.getTicket(id);
         onlineSalesRegisterService.refundTicket(id);
-
-        return "The ticket was return successfully " + ticket;
+        System.out.println("The ticket was return successfully " + ticket);
+        return ticket;
     }
-
-
 }

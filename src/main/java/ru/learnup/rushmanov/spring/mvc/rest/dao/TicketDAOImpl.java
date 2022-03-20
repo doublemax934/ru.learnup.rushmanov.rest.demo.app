@@ -27,21 +27,25 @@ public class TicketDAOImpl implements TicketDAO{
     }
 
     @Override
-    public void buyTicket(int id) {
+    public Ticket buyTicket(int id) {
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("update Ticket set status = 'sold'" +
                 "where id =:ID")
                 .setParameter("ID", id)
                 .executeUpdate();
+        Ticket ticket = session.get(Ticket.class, id);
+        return ticket;
     }
 
     @Override
-    public void refundTicket(int id) {
+    public Ticket refundTicket(int id) {
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("update Ticket set status = 'on sale'" +
                         "where id =:ID")
                 .setParameter("ID", id)
                 .executeUpdate();
+        Ticket ticket = session.get(Ticket.class, id);
+        return ticket;
     }
 
     @Override

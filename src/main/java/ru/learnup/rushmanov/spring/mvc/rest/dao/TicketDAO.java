@@ -9,9 +9,9 @@ public interface TicketDAO {
 
     public List<Ticket> getAllTickets(String title);
 
-    public void buyTicket(int id);
+    public Ticket buyTicket(int id);
 
-    public void refundTicket(int id);
+    public Ticket refundTicket(int id);
 
     public Ticket getTicket(int id);
 }
