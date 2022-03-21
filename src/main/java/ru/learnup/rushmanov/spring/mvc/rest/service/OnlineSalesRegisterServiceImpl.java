@@ -43,8 +43,8 @@ public class OnlineSalesRegisterServiceImpl implements OnlineSalesRegisterServic
 
     @Override
     @Transactional
-    public List<Ticket> getAllTickets(String title) {
-        return ticketDAO.getAllTickets(title);
+    public List<Ticket> getAllTickets(int id) {
+        return ticketDAO.getAllTickets(id);
     }
 
     @Override

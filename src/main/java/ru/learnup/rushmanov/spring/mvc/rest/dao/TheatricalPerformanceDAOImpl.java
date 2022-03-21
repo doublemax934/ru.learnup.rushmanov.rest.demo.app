@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.learnup.rushmanov.spring.mvc.rest.entity.TheatricalPerformance;
+import ru.learnup.rushmanov.spring.mvc.rest.entity.Ticket;
 
 import java.util.List;
 
@@ -29,9 +30,12 @@ public class TheatricalPerformanceDAOImpl implements TheatricalPerformanceDAO{
     public void saveNewPerformance(TheatricalPerformance performance) {
         Session session = sessionFactory.getCurrentSession();
         performance.setTicketList(performance.getTitle(),performance.getTicketPrice1(),
-                performance.getTicketPrice2(), performance.getTicketPrice3());
+                performance.getTicketPrice2(), performance.getTicketPrice3(), null);
         session.saveOrUpdate (performance);
+
     }
+
+
 
     @Override
     public TheatricalPerformance getPerfomance(int id) {

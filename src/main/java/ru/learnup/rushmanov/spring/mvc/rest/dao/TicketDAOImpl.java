@@ -4,6 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import ru.learnup.rushmanov.spring.mvc.rest.entity.TheatricalPerformance;
 import ru.learnup.rushmanov.spring.mvc.rest.entity.Ticket;
 
 import java.util.List;
@@ -16,11 +17,11 @@ public class TicketDAOImpl implements TicketDAO{
     private SessionFactory sessionFactory;
 
     @Override
-    public List<Ticket> getAllTickets(String title) {
+    public List<Ticket> getAllTickets(int id) {
         Session session = sessionFactory.getCurrentSession();
         List<Ticket> allTickets = session.createQuery("from Ticket " +
-                        "where ticketTitle =:title")
-                .setParameter("title", title)
+                        "where theatricalPerformanceId =:ID")
+                .setParameter("ID", id)
                 .getResultList();
 
         return allTickets;

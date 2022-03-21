@@ -15,13 +15,11 @@ public interface OnlineSalesRegisterService {
 
     public void deletePerformance (int id);
 
-    public List<Ticket> getAllTickets(String title);
+    public List<Ticket> getAllTickets(int id);
 
     public Ticket getTicket(int id);
 
     public Ticket buyTicket(int id);
 
     public Ticket refundTicket(int id);
-
-
 }

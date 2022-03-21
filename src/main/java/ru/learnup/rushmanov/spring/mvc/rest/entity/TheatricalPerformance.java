@@ -14,7 +14,7 @@ public class TheatricalPerformance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
-    private int id;
+    private Integer id;
     @Column(name="name")
     private String title;
     @Column(name="date_and_time")
@@ -45,7 +45,8 @@ public class TheatricalPerformance {
                                  String ageCategory,
                                  int ticketPrice1,
                                  int ticketPrice2,
-                                 int ticketPrice3) {
+                                 int ticketPrice3,
+                                 Integer theatricalPerformanceId) {
 
         this.title = title;
         this.dateAndTime = dateAndTime;
@@ -55,50 +56,42 @@ public class TheatricalPerformance {
         this.ticketPrice3=ticketPrice3;
         for (int i = 0; i < 10; i ++){
 
-            this.ticketList.add(new Ticket(title, ticketPrice1, (i +1)));
+            this.ticketList.add(new Ticket(title, ticketPrice1, (i +1),null));
         }
         for (int i = 10; i < 20; i ++){
-            this.ticketList.add(new Ticket(title, ticketPrice2, (i +1)));
+            this.ticketList.add(new Ticket(title, ticketPrice2, (i +1),null));
         }
         for (int i =20; i < 30; i ++){
-            this.ticketList.add(new Ticket(title, ticketPrice3,  (i +1)));
+            this.ticketList.add(new Ticket(title, ticketPrice3,  (i +1),null));
         }
         this.numberOfSeats = ticketList.size();
     }
 
-    public TheatricalPerformance() {
-//        for (int i = 0; i < 10; i ++){
-//
-//            this.ticketList.add(new Ticket(title, ticketPrice1, (i +1)));
-//        }
-//        for (int i = 10; i < 20; i ++){
-//            this.ticketList.add(new Ticket(title, ticketPrice2, (i +1)));
-//        }
-//        for (int i =20; i < 30; i ++){
-//            this.ticketList.add(new Ticket(title, ticketPrice3,  (i +1)));
-//        }
-//        this.numberOfSeats = ticketList.size();
-
-    }
+    public TheatricalPerformance() {}
 
 
-    public void setTicketList(String title,int ticketPrice1,
-                              int ticketPrice2,
-                              int ticketPrice3) {
+    public void setTicketList(String title,int ticketPrice1, int ticketPrice2, int ticketPrice3, Integer theatricalPerformanceId) {
 
             for (int i = 0; i < 10; i++) {
 
-                this.ticketList.add(new Ticket(title, ticketPrice1, (i + 1)));
+                this.ticketList.add(new Ticket(title, ticketPrice1, (i + 1), null) );
             }
             for (int i = 10; i < 20; i++) {
-                this.ticketList.add(new Ticket(title, ticketPrice2, (i + 1)));
+                this.ticketList.add(new Ticket(title, ticketPrice2, (i + 1),null));
             }
             for (int i = 20; i < 30; i++) {
-                this.ticketList.add(new Ticket(title, ticketPrice3, (i + 1)));
+                this.ticketList.add(new Ticket(title, ticketPrice3, (i + 1),null));
             }
 
         this.numberOfSeats = ticketList.size();
     }
+
+//    public void updateTicketList(String title,int ticketPrice1, int ticketPrice2, int ticketPrice3){
+//        for (int i = 0; i < 10; i++) {
+//
+//
+//        }
+//    }
 
 
     public int getNumberOfSeats() {

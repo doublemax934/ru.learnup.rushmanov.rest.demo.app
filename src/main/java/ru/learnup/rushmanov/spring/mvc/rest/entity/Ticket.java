@@ -7,7 +7,7 @@ public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
-    private int id;
+    private Integer id;
     @Column(name="title")
     private String ticketTitle;
     @Column(name="price")
@@ -16,33 +16,26 @@ public class Ticket {
     private String status;
     @Column(name="seat_number")
     private  int seatNumber;
+    @Column(name = "theatrical_performance_id")
+    private Integer theatricalPerformanceId;
 
-//    @ManyToOne(cascade = CascadeType.ALL)
+//    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name ="theatrical_performance_id")
 //    private TheatricalPerformance theatricalPerformance;
 
 
-    public Ticket() {
-    }
+    public Ticket() {}
 
-//    public TheatricalPerformance getTheatricalPerformance() {
-//        return theatricalPerformance;
-//    }
-//
-//    public void setTheatricalPerformance(TheatricalPerformance theatricalPerformance) {
-//        this.theatricalPerformance = theatricalPerformance;
-//    }
 
-    public Ticket(String ticketTitle, int price, int seatNumber) {
+    public Ticket(String ticketTitle, int price, int seatNumber, Integer theatricalPerformanceId) {
+
         this.ticketTitle = ticketTitle;
         this.price = price;
         this.status = "on sale";
         this.seatNumber=seatNumber;
+        this.theatricalPerformanceId = null;
     }
 
-    public int getPrice() {
-        return price;
-    }
 
     public String buy (int price){
         if(this.price == price){
@@ -58,12 +51,24 @@ public class Ticket {
         return status;
     }
 
+    public Integer getTheatricalPerformanceId() {
+        return theatricalPerformanceId;
+    }
+
+    public void setTheatricalPerformanceId(Integer theatricalPerformanceId) {
+        this.theatricalPerformanceId = theatricalPerformanceId;
+    }
+
     public String getTicketTitle() {
         return ticketTitle;
     }
 
     public void setTicketTitle(String ticketTitle) {
         this.ticketTitle = ticketTitle;
+    }
+
+    public int getPrice() {
+        return price;
     }
 
     public void setPrice(int price) {
@@ -94,6 +99,13 @@ public class Ticket {
         this.id = id;
     }
 
+//    public TheatricalPerformance getTheatricalPerformance() {
+//        return theatricalPerformance;
+//    }
+//
+//    public void setTheatricalPerformance(TheatricalPerformance theatricalPerformance) {
+//        this.theatricalPerformance = theatricalPerformance;
+//    }
 
     @Override
     public String toString() {
